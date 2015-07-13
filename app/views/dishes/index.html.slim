@@ -1,22 +1,23 @@
 h1 Listing the dishes
+
 #dishes_index
  - if @dishes.any?              
-   table.table.table-striped.table-bordered
-     thead
-       tr
-         th Title
-         th Description
-         th Cost
-         th Pax
-         th Vegetarian
-     tbody
-       - @dishes.each do |dish|
-         tr
-          td = dish.title
-          td = dish.description
-          td = dish.cost
-          td = dish.pax
-          td = dish.vegetarian
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th Title
+          th Description
+          th Cost
+          th Pax
+          th Vegetarian
+      tbody
+        - @dishes.each do |dish|
+          tr
+           td = dish.title
+           td = dish.description
+           td = dish.cost
+           td = dish.pax
+           td = dish.vegetarian
  - else
     p.message.clear
       | "No dishes found! Thank you"
