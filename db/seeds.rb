@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Dish.destroy_all
+
+Dish.create(title: 'Pho ga', description: 'This is pho ga', cost: 20, pax: 10, vegetarian: false)
+Dish.create(title: 'Hu tieu', description: 'This is hu tieu nam vang', cost: 30, pax: 10, vegetarian: false)
