@@ -7,4 +7,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = yield
+    .container    
+       #dishes_devise
+         - if fan_signed_in?
+             .sign_out 
+               = "Welcome #{current_fan.first_name} "
+               = link_to 'Sign out', destroy_fan_session_path, method: :delete
+         - else
+             .sign_in = link_to 'Sign in', new_fan_session_path
+
+       = yield
