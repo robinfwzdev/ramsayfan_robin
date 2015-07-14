@@ -60,5 +60,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'awesome_print'
+
+  gem 'html2slim'
 end
 
