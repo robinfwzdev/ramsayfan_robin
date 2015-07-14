@@ -10,10 +10,13 @@ html
     .container    
        #dishes_devise
          - if fan_signed_in?
-             .sign_out 
-               = "Welcome #{current_fan.first_name} "
-               = link_to 'Sign out', destroy_fan_session_path, method: :delete
+            ul
+               li = "Welcome #{current_fan.first_name}"
+               li = link_to 'Sign out', destroy_fan_session_url, method: :delete
+               li = link_to 'Edit Profile', edit_fan_registration_url(current_fan.id)
          - else
-             .sign_in = link_to 'Sign in', new_fan_session_path
+            ul
+               li = link_to 'Sign in',  new_fan_session_url
+               li = link_to 'Sign up',  new_fan_registration_url
 
        = yield
