@@ -1,0 +1,9 @@
+h1 Create a Dish
+#dishes_form
+   = semantic_form_for @dish do |f|
+      = f.input  :title
+      = f.input  :description
+      = f.input  :cost, min: 0.01
+      = f.input  :pax
+      = f.input  :vegetarian
+      = f.action :submit
