@@ -1,7 +1,11 @@
 class DishesController < ApplicationController
 
    def index
-      @dishes = Dish.all
+      if keyword.blank?
+         @dishes = Dish.all
+      else
+         @dishes = Dish.search_keyword(keyword)
+      end
    end
 
    def show
@@ -14,4 +18,7 @@ class DishesController < ApplicationController
       params.require(:id)
    end
 
+   def keyword
+      params[:keyword]
+   end
 end
