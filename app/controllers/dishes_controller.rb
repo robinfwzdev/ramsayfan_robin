@@ -1,5 +1,7 @@
 class DishesController < ApplicationController
 
+   before_filter :authenticate_fan!, only: :new
+
    def index
       if keyword.blank?
          @dishes = Dish.all
@@ -10,6 +12,10 @@ class DishesController < ApplicationController
 
    def show
       @dish = Dish.find(dish_id)
+   end
+
+   def new
+      @dish = Dish.new
    end
 
    private
