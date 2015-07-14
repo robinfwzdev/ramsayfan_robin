@@ -1,11 +1,12 @@
 .container
 
   #dishes_devise
-    ul
       - if fan_signed_in?
-          li = link_to 'Sign out', destroy_fan_session_path, method: :delete
+          .sign_out 
+            = "Welcome #{current_fan.first_name}"
+            = link_to 'Sign out', destroy_fan_session_path, method: :delete
       - else
-          li = link_to 'Sign in', new_fan_session_path
+          .sign_in = link_to 'Sign in', new_fan_session_path
 
   h1 Listing the dishes
 
