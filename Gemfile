@@ -30,6 +30,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'pg'
 
+gem 'devise'
+
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
