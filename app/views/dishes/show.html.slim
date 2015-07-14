@@ -1,0 +1,21 @@
+#dishes-show
+   h1 = @dish.title
+
+   table.table.table-striped.table-bordered
+      tr
+         td Description
+         td = @dish.description
+      tr
+         td Cost
+         td = "$ #{@dish.cost}" 
+      tr
+         td Pax
+         td = @dish.pax
+      tr
+         td Vegetarian
+         td = @dish.vegetarian
+      tr
+         td Create date
+         td = @dish.created_at
+
+   .back_url    = link_to 'Back', dishes_path
