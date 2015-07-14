@@ -13,7 +13,7 @@ h1 Listing the dishes
       tbody
         - @dishes.each do |dish|
           tr
-           td = dish.title
+           td = link_to dish.title, dish_path(dish)
            td = dish.description
            td $ #{dish.cost}
            td = dish.pax
