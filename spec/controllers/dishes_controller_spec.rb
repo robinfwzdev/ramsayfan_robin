@@ -32,4 +32,37 @@ RSpec.describe DishesController, type: :controller do
       end
    end
 
+   describe '#create' do
+      def do_request
+         post :create, dish: params
+      end
+
+      let!(:fan){ FactoryGirl.create(:fan) }
+
+      before do
+         sign_in fan
+      end
+
+      context "Success" do
+         let(:params){ FactoryGirl.attributes_for(:dish, fan_id: fan) }
+
+         it 'saves a dish' do
+            expect{ do_request }.to change(Dish, :count).by(1)
+         end
+
+         it 'redirects to index on success' do
+            do_request
+            expect(response).to redirect_to dishes_url
+         end
+      end
+
+      context 'Failure' do
+         let(:params){ FactoryGirl.attributes_for(:dish, title: '', fan_id: fan) }
+
+         it 'renders new on failure' do 
+            do_request
+            expect(response).to render_template :new
+         end
+      end
+   end
 end
