@@ -19,4 +19,17 @@ RSpec.describe DishesController, type: :controller do
       end
    end
 
+   describe '#new' do
+      let!(:fan){ FactoryGirl.create(:fan) }
+
+      before :each do
+         sign_in fan
+      end
+
+      it 'assigns an empty dish instance' do
+         get :new
+         expect(assigns(:dish)).to be_a Dish
+      end
+   end
+
 end
