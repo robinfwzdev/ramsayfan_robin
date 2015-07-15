@@ -116,6 +116,10 @@ RSpec.describe DishesController, type: :controller do
       let!(:fan){ FactoryGirl.create(:fan) }
       let!(:dishes){ FactoryGirl.create_list(:dish, 2, fan: fan) }
 
+       before do
+         sign_in fan
+      end
+      
       it "check list dish" do
          get :mydishes
          expect(assigns(:dishes).size).to eq dishes.size
