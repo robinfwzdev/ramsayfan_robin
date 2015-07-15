@@ -20,4 +20,14 @@ RSpec.describe Dish, type: :model do
       end
    end
 
+   describe 'Get dish by fan' do
+      let!(:fan) { FactoryGirl.create(:fan) }
+      let!(:dishes) { FactoryGirl.create_list(:dish, 2, fan: fan) }
+
+      it 'get dishes by fan_id' do
+         results = Dish.getDishesByFan(fan.id)
+         expect(results.size).to eq dishes.size
+      end
+   end
+
 end
