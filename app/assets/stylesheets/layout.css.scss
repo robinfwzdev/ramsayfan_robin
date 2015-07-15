@@ -21,6 +21,21 @@
 
 #dishes_form .label{
    color: #000 !important;
+   float: left; 
+   width: 8%;
 }
 
+.vegetarian{
+   margin-left: 3%;
+   float: left;
+   width: 10%;
+}
+
+input[type="radio"], input[type="checkbox"]{
+   margin-right: 7px !important;
+}
+
+#dish_submit_action{
+   margin-left: 3%;
+}
 
