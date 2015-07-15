@@ -68,7 +68,7 @@ RSpec.describe DishesController, type: :controller do
 
    describe '#edit' do
       let!(:fan){ FactoryGirl.create(:fan) }
-      let!(:dish){ FactoryGirl.create(:dish, fan_id: fan) }
+      let!(:dish){ FactoryGirl.create(:dish, fan: fan) }
 
       before do
          sign_in fan
@@ -82,7 +82,7 @@ RSpec.describe DishesController, type: :controller do
 
     describe '#update' do
       let!(:fan){ FactoryGirl.create(:fan) }
-      let!(:dish){ FactoryGirl.create(:dish, fan_id: fan) }
+      let!(:dish){ FactoryGirl.create(:dish, fan: fan) }
 
       before do
          sign_in fan
@@ -112,5 +112,14 @@ RSpec.describe DishesController, type: :controller do
       end
    end
 
+   describe "#mydishes" do
+      let!(:fan){ FactoryGirl.create(:fan) }
+      let!(:dishes){ FactoryGirl.create_list(:dish, 2, fan: fan) }
+
+      it "check list dish" do
+         get :mydishes
+         expect(assigns(:dishes).size).to eq dishes.size
+      end
+   end
 
 end
