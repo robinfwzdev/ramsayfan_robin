@@ -8,7 +8,7 @@
             td = @dish.description
          tr
             td Cost
-            td = "$ #{@dish.cost}" 
+            td = number_to_currency(@dish.cost, precision: 2)
          tr
             td Pax
             td = @dish.pax
