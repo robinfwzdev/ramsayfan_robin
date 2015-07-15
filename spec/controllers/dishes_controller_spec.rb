@@ -131,4 +131,13 @@ RSpec.describe DishesController, type: :controller do
       end
    end
 
+   describe '#unpublished' do  
+      let!(:dish){ FactoryGirl.create(:dish, published: true) }  
+
+      it 'displays a dish' do
+         get :unpublished, id: dish.id
+         expect(assigns(:dish).published).to eq false
+      end
+   end
+
 end
