@@ -4,5 +4,6 @@ FactoryGirl.define do
       description "Pho gia truyen viet nam"
       cost 12.9
       pax  20
+      published true
    end
 end
