@@ -43,6 +43,10 @@ class DishesController < ApplicationController
       end
    end
 
+   def mydishes
+      @dishes = Dish.all
+   end
+
    private
 
    def dish_id
