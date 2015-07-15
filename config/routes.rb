@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get '/dishes/mydishes', to: 'dishes#mydishes'
     end
+    member do
+      get '/dishes/published', to: 'dishes#published'
+    end
   end
   root to: "dishes#index"
   # The priority is based upon order of creation: first created -> highest priority.
