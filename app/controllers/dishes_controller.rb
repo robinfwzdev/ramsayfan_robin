@@ -44,7 +44,7 @@ class DishesController < ApplicationController
    end
 
    def mydishes
-      @dishes = Dish.all
+      @dishes = Dish.getDishesByFan(current_fan.id) if current_fan.present?
    end
 
    private
