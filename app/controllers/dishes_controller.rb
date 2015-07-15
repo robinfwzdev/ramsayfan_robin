@@ -39,7 +39,7 @@ class DishesController < ApplicationController
    end
 
    def dish_params
-      params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian).merge(fan_id: current_fan.id)
+      params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :fan_id).merge(fan_id: current_fan.id)
    end
 
 end
