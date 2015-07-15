@@ -32,6 +32,8 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'rails_admin'
+
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
