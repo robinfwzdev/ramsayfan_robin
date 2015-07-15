@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     member do
       get '/dishes/published', to: 'dishes#published'
+      get '/dishes/unpublished', to: 'dishes#unpublished'
     end
   end
   root to: "dishes#index"
