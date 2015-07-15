@@ -37,6 +37,7 @@ RSpec.describe "can manage all spec", :type => :feature do
             fill_in 'Description', with: 'This is very delicious'
             fill_in 'Cost', with: 10
             fill_in 'Pax', with: 10
+            check 'Published'
 
             click_on 'Create Dish'
             
