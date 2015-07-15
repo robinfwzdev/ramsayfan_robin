@@ -24,7 +24,7 @@ h1 Listing my dishes
             - if current_fan.present?
               = link_to 'Edit ', edit_dish_path(dish) if current_fan.id == dish.fan_id
               - if dish.published
-                = link_to 'Unpublished', dishes_published_dish_path(dish)
+                = link_to 'Unpublished', dishes_unpublished_dish_path(dish)
               - else
                 = link_to 'Published', dishes_published_dish_path(dish) 
  - else
