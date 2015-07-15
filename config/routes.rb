@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :fans, :controllers => { registrations: 'registrations' }
   resources :dishes, only: [:index, :show, :new, :create, :edit, :update] do 
