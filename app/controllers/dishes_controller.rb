@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
 
-   before_filter :authenticate_fan!, only: [:new, :create]
+   before_filter :authenticate_fan!, only: [:new, :create, :edit, :update]
 
    def index
       if keyword.blank?
@@ -24,6 +24,21 @@ class DishesController < ApplicationController
          redirect_to dishes_url, notice: "you have successfully created a dish!"             
       else
          flash.now[:error] = "There is an error to create your dish"
+         render :new
+      end
+   end
+
+    def edit
+      @dish = Dish.find(dish_id)
+      render :new
+   end
+
+   def update
+      @dish = Dish.find(dish_id)
+      if @dish.update(dish_params)
+         redirect_to dishes_url, notice: "you have successfully updated a dish!" 
+      else
+         flash.now[:error] = "There is an error to update your dish"
          render :new
       end
    end
