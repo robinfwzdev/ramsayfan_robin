@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :fans, :controllers => { registrations: 'registrations' }
-  resources :dishes, only: [:index, :show, :new, :create, :edit, :update]
-  get 'dishes/mydishes', to: 'dishes#mydishes'
+  resources :dishes, only: [:index, :show, :new, :create, :edit, :update] do 
+    collection do
+      get '/dishes/mydishes', to: 'dishes#mydishes'
+    end
+  end
   root to: "dishes#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
