@@ -22,7 +22,7 @@ br
           tr
            td = link_to dish.title, dish_path(dish)
            td = dish.description
-           td $ #{dish.cost}
+           td = number_to_currency(dish.cost, precision: 2)
            td = dish.pax
            td = dish.vegetarian
            td 
