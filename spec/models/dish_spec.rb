@@ -30,4 +30,15 @@ RSpec.describe Dish, type: :model do
       end
    end
 
+   describe 'Published' do
+      let!(:published)  { FactoryGirl.create(:dish, published: true) }
+      let!(:unpublished){ FactoryGirl.create(:dish, title: 'dry chicken', published: false) }
+
+      it 'Search dishes by title' do
+         results = Dish.published
+         expect(results.first.title).to eq published.title
+         expect(results.first.title).not_to eq unpublished.title
+      end
+   end
+
 end
