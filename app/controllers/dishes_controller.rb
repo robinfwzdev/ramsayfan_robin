@@ -59,6 +59,18 @@ class DishesController < ApplicationController
       redirect_to dishes_mydishes_dishes_url
    end
 
+   def unpublished
+      @dish = Dish.find(dish_id)
+      @dish.published = false
+
+      if @dish.save
+         flash[:notice] = "You have unpublished dish successfully"
+      else
+         flash.now[:error] = "There is an error to unpublished your dish"
+      end
+      redirect_to dishes_mydishes_dishes_url
+   end
+
 
    private
 
