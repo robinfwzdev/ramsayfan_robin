@@ -11,5 +11,5 @@ Fan.destroy_all
 
 fan = Fan.create(first_name: 'robin', last_name: 'futureworkz', email: 'robin@example.com', password: '12345678')
 
-Dish.create(title: 'Pho ga', description: 'This is pho ga', cost: 20, pax: 10, vegetarian: false, fan_id: fan)
-Dish.create(title: 'Hu tieu', description: 'This is hu tieu nam vang', cost: 30, pax: 10, vegetarian: false, fan_id: fan)
+Dish.create(title: 'Pho ga', description: 'This is pho ga', cost: 20, pax: 10, vegetarian: false, fan: fan)
+Dish.create(title: 'Hu tieu', description: 'This is hu tieu nam vang', cost: 30, pax: 10, vegetarian: false, fan: fan)
