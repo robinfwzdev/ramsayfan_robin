@@ -4,9 +4,9 @@ class DishesController < ApplicationController
 
    def index
       if keyword.blank?
-         @dishes = Dish.all
+         @dishes = Dish.all.published
       else
-         @dishes = Dish.search_keyword(keyword)
+         @dishes = Dish.search_keyword(keyword).published
       end
    end
 
