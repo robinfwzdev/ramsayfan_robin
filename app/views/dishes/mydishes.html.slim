@@ -1,0 +1,30 @@
+
+h1 Listing my dishes
+   
+#dishes_index
+ - if @dishes.any?              
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th Title
+          th Description
+          th Cost
+          th Pax
+          th Vegetarian
+          th Action
+      tbody
+        - @dishes.each do |dish|
+          tr
+           td = link_to dish.title, dish_path(dish)
+           td = dish.description
+           td $ #{dish.cost}
+           td = dish.pax
+           td = dish.vegetarian
+           td 
+            - if current_fan.present?
+              = link_to 'Edit', edit_dish_path(dish) if current_fan.id == dish.fan_id
+ - else
+    p.message.clear
+      | "No dishes found! Thank you"
+
+         
