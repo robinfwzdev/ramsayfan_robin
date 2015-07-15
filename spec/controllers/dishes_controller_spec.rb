@@ -65,4 +65,52 @@ RSpec.describe DishesController, type: :controller do
          end
       end
    end
+
+   describe '#edit' do
+      let!(:fan){ FactoryGirl.create(:fan) }
+      let!(:dish){ FactoryGirl.create(:dish, fan_id: fan) }
+
+      before do
+         sign_in fan
+      end
+
+      it 'assigns a dish instance' do
+         get :edit, id: dish.id
+         expect(assigns(:dish).id).to eq dish.id
+      end
+   end
+
+    describe '#update' do
+      let!(:fan){ FactoryGirl.create(:fan) }
+      let!(:dish){ FactoryGirl.create(:dish, fan_id: fan) }
+
+      before do
+         sign_in fan
+      end
+
+      def do_request
+         patch :update, id: dish.id, dish: params
+      end
+
+      context "Success" do
+         let(:params){ FactoryGirl.attributes_for(:dish, title: "com ga xoi mo", fan_id: fan) }
+         
+         it 'updates a dish' do
+            do_request
+            expect(dish.reload.title).to eq params[:title]
+            expect(response).to redirect_to dishes_url
+         end
+      end
+
+      context 'Failure' do
+         let(:params){ FactoryGirl.attributes_for(:dish, title: "") }
+
+         it 'renders new on failure' do 
+            do_request
+            expect(response).to render_template :new
+         end
+      end
+   end
+
+
 end
