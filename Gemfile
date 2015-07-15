@@ -62,5 +62,7 @@ group :development, :test do
   gem 'awesome_print'
 
   gem 'html2slim'
+
+  gem 'capybara'
 end
 
