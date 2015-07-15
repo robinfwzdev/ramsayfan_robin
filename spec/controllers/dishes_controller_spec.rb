@@ -80,7 +80,7 @@ RSpec.describe DishesController, type: :controller do
       end
    end
 
-    describe '#update' do
+   describe '#update' do
       let!(:fan){ FactoryGirl.create(:fan) }
       let!(:dish){ FactoryGirl.create(:dish, fan: fan) }
 
@@ -119,6 +119,15 @@ RSpec.describe DishesController, type: :controller do
       it "check list dish" do
          get :mydishes
          expect(assigns(:dishes).size).to eq dishes.size
+      end
+   end
+
+   describe '#published' do  
+      let!(:dish){ FactoryGirl.create(:dish) }  
+
+      it 'displays a dish' do
+         get :published, id: dish.id
+         expect(assigns(:dish).published).to eq true
       end
    end
 
