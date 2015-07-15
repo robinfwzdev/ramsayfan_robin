@@ -47,6 +47,19 @@ class DishesController < ApplicationController
       @dishes = Dish.getDishesByFan(current_fan.id) if current_fan.present?
    end
 
+   def published
+      @dish = Dish.find(dish_id)
+      @dish.published = true
+
+      if @dish.save
+         flash[:notice] = "You have published dish successfully"
+      else
+         flash.now[:error] = "There is an error to published your dish"
+      end
+      redirect_to dishes_mydishes_dishes_url
+   end
+
+
    private
 
    def dish_id
