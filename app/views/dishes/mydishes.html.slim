@@ -22,7 +22,11 @@ h1 Listing my dishes
            td = dish.vegetarian
            td 
             - if current_fan.present?
-              = link_to 'Edit', edit_dish_path(dish) if current_fan.id == dish.fan_id
+              = link_to 'Edit ', edit_dish_path(dish) if current_fan.id == dish.fan_id
+              - if dish.published
+                = link_to 'Unpublished', dishes_published_dish_path(dish)
+              - else
+                = link_to 'Published', dishes_published_dish_path(dish) 
  - else
     p.message.clear
       | "No dishes found! Thank you"
