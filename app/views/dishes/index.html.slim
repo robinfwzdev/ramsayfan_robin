@@ -16,6 +16,7 @@ br
           th Cost
           th Pax
           th Vegetarian
+          th Action
       tbody
         - @dishes.each do |dish|
           tr
@@ -24,6 +25,9 @@ br
            td $ #{dish.cost}
            td = dish.pax
            td = dish.vegetarian
+           td 
+            - if current_fan.present?
+              = link_to 'Edit', edit_dish_path(dish) if current_fan.id == dish.fan_id
  - else
     p.message.clear
       | "No dishes found! Thank you"
