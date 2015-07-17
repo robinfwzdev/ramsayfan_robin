@@ -7,4 +7,5 @@ class Dish < ActiveRecord::Base
    scope :search_keyword, ->(keyword) { where('title ILIKE ?', "#{keyword}%") }
    scope :getDishesByFan, ->(fan_id)  { where('fan_id = ?', fan_id) }
    scope :published,      ->          { where(published: true) }
+   scope :approved,       ->          { where(approved: true) }
 end

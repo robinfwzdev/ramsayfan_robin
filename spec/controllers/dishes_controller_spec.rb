@@ -8,6 +8,14 @@ RSpec.describe DishesController, type: :controller do
          get :index
          expect(assigns(:dishes).size).to eq dishes.size
       end
+
+      let!(:dish_published_and_approved) {FactoryGirl.create(:dish, approved: true)}
+      let!(:dish_approved_not_published) {FactoryGirl.create(:dish, published: false)}
+
+      it "only show dishes is published and approved" do 
+         get :index
+         expect(assigns(:dishes).first).to eq dish_published_and_approved
+      end
    end
 
    describe '#show' do  
