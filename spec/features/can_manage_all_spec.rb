@@ -16,15 +16,15 @@ RSpec.describe "can manage all spec", :type => :feature do
    end
 
    describe '#create' do
-      let!(:fan){ FactoryGirl.create(:fan) }
+      let!(:fan){ FactoryGirl.create(:fan, email: 'robinhood@example.com') }
 
       context 'User can create a dish' do
          it 'Create a dish by fan' do
             visit '/dishes'
 
-            expect(page).to have_link 'Create a dish'
+            expect(page).to have_link 'Create a Dish'
 
-            click_on 'Create a dish'
+            click_on 'Create a Dish'
 
             fill_in 'Email', with: 'robinhood@example.com'
             fill_in 'Password', with: '12345678'

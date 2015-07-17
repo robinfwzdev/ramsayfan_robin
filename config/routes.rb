@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   devise_for :fans, :controllers => { registrations: 'registrations' }
   resources :dishes, only: [:index, :show, :new, :create, :edit, :update] do 
     collection do
-      get '/dishes/mydishes', to: 'dishes#mydishes'
+      get '/dishes/mydishes',
+       to: 'dishes#mydishes'
     end
     member do
       get '/dishes/published', to: 'dishes#published'
