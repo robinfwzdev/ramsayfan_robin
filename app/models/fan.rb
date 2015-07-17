@@ -1,4 +1,5 @@
 class Fan < ActiveRecord::Base
+	 acts_as_voter
    has_many :dishes
    
    validates :first_name, :last_name, presence: true

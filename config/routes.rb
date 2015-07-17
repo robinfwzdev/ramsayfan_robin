@@ -9,6 +9,8 @@ Rails.application.routes.draw do
        to: 'dishes#mydishes'
     end
     member do
+      put 'like', to: 'dishes#upvote'
+      put 'dislike', to: 'dishes#downvote'
       get '/dishes/published', to: 'dishes#published'
       get '/dishes/unpublished', to: 'dishes#unpublished'
     end

@@ -1,4 +1,5 @@
 class Dish < ActiveRecord::Base
+	 acts_as_votable
    belongs_to :fan
 
    validates :title, :description, presence: true

@@ -71,6 +71,18 @@ class DishesController < ApplicationController
       redirect_to dishes_mydishes_dishes_url
    end
 
+   def upvote
+      @dish = Dish.find(dish_id)
+      @dish.upvote_by current_fan
+      redirect_to :back
+   end
+
+   def downvote
+      @dish = Dish.find(dish_id)
+      @dish.downvote_by current_fan
+      redirect_to :back
+   end
+
 
    private
 

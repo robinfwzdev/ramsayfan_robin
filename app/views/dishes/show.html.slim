@@ -19,4 +19,11 @@
             td Create date
             td = @dish.created_at
 
+      = link_to '+', like_dish_path(@dish), method: :put, class: "btn btn-default btn-sm"
+      = @dish.get_upvotes.size
+      | - upvotes
+      br
+      = link_to '-', dislike_dish_path(@dish), method: :put , class: "btn btn-default btn-sm"
+      = @dish.get_downvotes.size 
+      | - downvotes
       .back_url = link_to 'Back', dishes_path
