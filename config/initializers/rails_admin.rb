@@ -1,7 +1,10 @@
+require Rails.root.join('lib', 'rails_admin', 'approve_dish.rb')
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ApproveDish)
+
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :admin
@@ -20,6 +23,10 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
+
+    approve_dish
+
+
     export
     bulk_delete
     show

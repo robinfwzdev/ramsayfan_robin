@@ -20,24 +20,25 @@ RSpec.describe Dish, type: :model do
       end
    end
 
-   describe 'Get dish by fan' do
-      let!(:fan) { FactoryGirl.create(:fan) }
-      let!(:dishes) { FactoryGirl.create_list(:dish, 2, fan: fan) }
+   describe 'Get dish by fan' do      
+      let!(:robin_dish) { FactoryGirl.create(:dish, fan: FactoryGirl.create(:fan)) }
+      let!(:steven_dish) { FactoryGirl.create(:dish, fan: FactoryGirl.create(:fan)) }
 
       it 'get dishes by fan_id' do
-         results = Dish.getDishesByFan(fan.id)
-         expect(results.size).to eq dishes.size
+         results = Dish.getDishesByFan(robin_dish.fan.id)
+         expect(results).to include robin_dish
+         expect(results).not_to include steven_dish
       end
    end
 
    describe 'Published' do
-      let!(:published)  { FactoryGirl.create(:dish, published: true) }
-      let!(:unpublished){ FactoryGirl.create(:dish, title: 'dry chicken', published: false) }
+      let!(:published_dish)  { FactoryGirl.create(:dish, published: true) }
+      let!(:unpublished_dish){ FactoryGirl.create(:dish, published: false) }
 
       it 'Search dishes by title' do
          results = Dish.published
-         expect(results.first.title).to eq published.title
-         expect(results.first.title).not_to eq unpublished.title
+         expect(results).to include published_dish
+         expect(results).not_to include unpublished_dish
       end
    end
 
